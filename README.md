@@ -2,6 +2,10 @@
 
 O **Overflow** é uma aplicação web desenvolvida em Next.js para gerenciar e controlar as atividades realizadas durante horas extras de trabalho. A ferramenta permite registrar, organizar e gerar relatórios detalhados de todas as tarefas executadas fora do horário comercial.
 
+## 🎓 Propósito do Projeto
+
+Este projeto foi desenvolvido com o objetivo de **estudar e aprimorar conhecimentos** nas principais tecnologias modernas de desenvolvimento web, incluindo Next.js, React, geração de PDFs, gerenciamento de estado e design responsivo. É uma aplicação prática que combina funcionalidades reais com oportunidades de aprendizado técnico.
+
 ## 📋 Sobre a Aplicação
 
 O Overflow foi criado para profissionais e equipes que precisam documentar e controlar suas horas extras de forma organizada e eficiente. Com uma interface intuitiva e funcionalidades robustas, a aplicação facilita o acompanhamento da produtividade e a geração de relatórios profissionais.
