@@ -60,15 +60,6 @@ npm run dev
 4. **Acesse a aplicação:**
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador
 
-### 📝 **Dados de Teste**
-
-Para testar a aplicação com dados de exemplo, execute o script `dados-teste.js` no console do navegador (F12):
-
-```javascript
-// O script está disponível na raiz do projeto
-// Insere 25 trabalhos de exemplo para testar relatórios com múltiplas páginas
-```
-
 ## 🛠 Tecnologias Utilizadas
 
 - **Next.js 14**: Framework React para desenvolvimento web
