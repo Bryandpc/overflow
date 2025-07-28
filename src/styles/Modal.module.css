@@ -1,0 +1,82 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 30rem;
+    max-height: 90vh;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .50rem 1rem;
+}
+
+.cabecalho h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--roxo-principal);
+}
+
+.botaoFechar {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--texto-secundario);
+    border-radius: 6px;
+    border: 1px solid var(--roxo-principal);
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0; 
+}
+
+.botaoFechar:hover {
+    color: var(--texto-principal);
+    background-color: var(--roxo-hover-suave);
+}
+
+.conteudo {
+    padding: 1rem;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* Permite que elementos como dropdowns ultrapassem os limites */
+}
+
+.divisor {
+    height: 1px;
+    background-color: var(--cinza-claro);
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

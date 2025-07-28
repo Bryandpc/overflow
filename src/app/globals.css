@@ -1,13 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  --roxo-principal: #9046CF;
+  --cinza-claro: #F0F2EF;
+  --verde-suave: #CFD7C7;
+  
+  --roxo-escuro: #7A3BAF;
+  --roxo-claro: #A865D9;
+  --roxo-hover: #9C56D6;  
+  --roxo-hover-intenso: #9E4FE9; 
+  --roxo-hover-suave: #d1c3de;  
+  
+  --cinza-medio: #E0E2DF;
+  --verde-claro: #E3E9DD;
+  
+  --texto-principal: #2D3748;
+  --texto-secundario: #718096;
+  --texto-claro: #A0AEC0;
+  --branco: #ffffff;
+  --sucesso: #48BB78;
+  --aviso: #ED8936;
+  --erro: #F56565;
+  
+  /* Cores para prioridades */
+  --prioridade-alta: #F56565;
+  --prioridade-media: #d97706;
+  --prioridade-urgente: #6B46C1;
+  --prioridade-baixa: #2f855a;
+  
+  /* Cores para componentes de ações */
+  --acao-dashboard: #4f46e5;
+  --acao-relatorio: #10b981;
+  --acao-excluir: #F56565;
+  
+  /* Cores para avisos */
+  --aviso-bg: #fff9db;
+  --aviso-borda: #ffd43b;
+  --aviso-texto: #e67700;
+  
+  /* Cores adicionais de hover */
+  --roxo-hover-escuro: #7c3aaf;
+  --roxo-sombra: rgba(144, 70, 207, 0.3);
 }
 
 html,
@@ -17,9 +53,9 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto-principal);
+  background: var(--cinza-claro);
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

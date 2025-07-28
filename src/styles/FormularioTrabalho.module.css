@@ -1,0 +1,62 @@
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalhoFormulario {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.tituloInput {
+    flex: 2;
+}
+
+.prioridadeSelect {
+    flex: 2; 
+}
+
+.tituloInput input {
+    height: 43px; 
+    box-sizing: border-box;
+}
+
+.prioridadeSelect > div > div:first-child {
+    height: 43px; 
+    box-sizing: border-box;
+}
+
+.rodapeFormulario {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: flex-start;
+}
+
+.horaInput {
+    flex: 1;
+}
+
+.horaInput input {
+    height: 43px; 
+    box-sizing: border-box;
+}
+
+.botoes {
+    display: flex;
+    margin-top: 1rem;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotatingIcon {
+    display: inline-block;
+    animation: rotate 1s linear infinite;
+}

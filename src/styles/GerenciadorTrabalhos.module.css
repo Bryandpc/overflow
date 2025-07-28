@@ -1,0 +1,21 @@
+.gerenciador {
+  position: relative;
+  height: 100%;
+}
+
+.listaContainer {
+  height: 100%;
+}
+
+.botaoDashboard {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 10;
+  background-color: rgba(79, 70, 229, 0.1);
+  color: var(--acao-dashboard);
+}
+
+.botaoDashboard:hover {
+  background-color: rgba(79, 70, 229, 0.2);
+}

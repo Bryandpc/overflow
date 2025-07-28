@@ -1,0 +1,86 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 1rem 0;
+}
+
+.instrucao {
+  color: var(--texto-secundario);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.erro {
+  color: var(--acao-excluir);
+  background-color: rgba(245, 101, 101, 0.1);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.avisoContainer {
+  background-color: var(--aviso-bg);
+  border: 1px solid var(--aviso-borda);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avisoMensagem {
+  color: var(--aviso-texto);
+  font-size: 0.95rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.avisoIcone {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.inputData {
+  margin-bottom: 1.25rem;
+}
+
+.acoes {
+  padding: 1rem 0;
+  border-top: 1px solid var(--cinza-claro);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.rotatingIcon {
+  display: inline-block;
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotatingIcon {
+  display: inline-block;
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

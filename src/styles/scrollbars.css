@@ -1,0 +1,40 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(144, 70, 207, 0.05);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--roxo-hover-suave);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--roxo-hover);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--roxo-hover-suave) rgba(144, 70, 207, 0.05);
+}
+
+.scroll-roxo::-webkit-scrollbar-thumb {
+  background: var(--roxo-principal);
+  transition: background-color 0.3s ease;
+}
+
+.scroll-roxo::-webkit-scrollbar-thumb:hover {
+  background: var(--roxo-escuro);
+}
+
+.scroll-roxo {
+  scrollbar-color: var(--roxo-principal) rgba(144, 70, 207, 0.05);
+}

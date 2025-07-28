@@ -1,0 +1,196 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titulo {
+  color: var(--texto-principal);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.infoGraficos {
+  margin-bottom: 2rem;
+  color: var(--texto-secundario);
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--branco);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para o comparativo de semanas */
+.comparativoSemanas {
+  width: 100%;
+}
+
+.comparativoSemanas h3 {
+  color: var(--texto-principal);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.indicadoresComparativo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.indicador {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--cinza-claro);
+  min-width: 280px;
+}
+
+.indicador.aumento {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--acao-relatorio);
+}
+
+.indicador.diminuição {
+  background-color: rgba(245, 101, 101, 0.1);
+  color: var(--acao-excluir);
+}
+
+.indicador.estável {
+  background-color: rgba(107, 70, 193, 0.1);
+  color: var(--roxo-principal);
+}
+
+.iconeIndicador {
+  font-size: 1.8rem;
+  margin-right: 0.75rem;
+}
+
+.indicadorTexto {
+  display: flex;
+  flex-direction: column;
+}
+
+.valorIndicador {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.descricaoIndicador {
+  font-size: 0.9rem;
+  color: var(--texto-secundario);
+}
+
+.detalhesHoras {
+  display: flex;
+  gap: 2rem;
+}
+
+.detalheItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.detalheLabel {
+  font-size: 0.85rem;
+  color: var(--texto-secundario);
+  margin-bottom: 0.25rem;
+}
+
+.detalheValor {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+.graficosWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.grafico {
+  background-color: var(--branco);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: auto;
+  min-height: 380px;
+}
+
+.grafico:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.grafico h3 {
+  font-size: 1.2rem;
+  color: var(--texto-principal);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.graficoPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.5rem;
+  color: var(--texto-secundario);
+  text-align: center;
+  padding: 1rem;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (min-width: 992px) {
+  .graficosWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .grafico {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grafico {
+    padding: 1rem;
+  }
+
+  .infoGraficos {
+    padding: 1rem;
+  }
+  
+  .indicadoresComparativo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .indicador {
+    width: 100%;
+  }
+  
+  .detalhesHoras {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

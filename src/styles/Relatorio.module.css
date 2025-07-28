@@ -1,0 +1,262 @@
+/* Estilos para o componente de Relatório */
+
+.relatorio {
+  background-color: var(--branco);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+  max-width: 1200px;
+}
+
+.cabecalho {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--cinza-claro);
+  padding-bottom: 1rem;
+}
+
+.cabecalho h2 {
+  font-size: 1.5rem;
+  color: var(--texto-principal);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.periodo {
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.resumo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.estatisticaHoras {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--roxo-principal);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.valorHoras {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.labelHoras {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.estatisticasPrioridade {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cardEstatistica {
+  padding: 1.25rem;
+  border-radius: 8px;
+  min-width: 110px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardEstatistica.baixa {
+  background-color: rgba(47, 133, 90, 0.1);
+  color: #2f855a;
+}
+
+.cardEstatistica.media {
+  background-color: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+}
+
+.cardEstatistica.alta {
+  background-color: rgba(245, 101, 101, 0.1);
+  color: #F56565;
+}
+
+.cardEstatistica.urgente {
+  background-color: rgba(107, 70, 193, 0.1);
+  color: #6B46C1;
+}
+
+.valorCard {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.labelCard {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.listaTrabalhos {
+  margin-top: 2.5rem;
+}
+
+.listaTrabalhos h3 {
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem 0;
+  color: var(--texto-principal);
+  font-weight: 600;
+}
+
+.tabela {
+  border: 1px solid var(--cinza-claro);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cabecalhoTabela {
+  display: flex;
+  background-color: var(--cinza-claro);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+.linha {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid var(--cinza-claro);
+}
+
+.linha:last-child {
+  border-bottom: none;
+}
+
+.linha:nth-child(even) {
+  background-color: var(--cinza-claro);
+}
+
+.coluna {
+  flex: 2;
+  padding-right: 1rem;
+  word-break: break-word;
+}
+
+.colunaSmall {
+  flex: 1;
+  padding-right: 1rem;
+  word-break: break-word;
+}
+
+.prioridade {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.prioridade.baixa {
+  background-color: rgba(47, 133, 90, 0.1);
+  color: #2f855a;
+}
+
+.prioridade.media {
+  background-color: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+}
+
+.prioridade.alta {
+  background-color: rgba(245, 101, 101, 0.1);
+  color: #F56565;
+}
+
+.prioridade.urgente {
+  background-color: rgba(107, 70, 193, 0.1);
+  color: #6B46C1;
+}
+
+/* Estilo para a data do trabalho */
+.dataTrabalho {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* Estilo para a mensagem de carregamento do PDF */
+.loadingPdf {
+  text-align: right;
+  margin-top: 1rem;
+  color: var(--texto-secundario);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.relatorioVazio {
+  background-color: var(--branco);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.relatorioVazio h2 {
+  font-size: 1.5rem;
+  color: var(--texto-principal);
+  margin: 0 0 1rem 0;
+}
+
+.relatorioVazio p {
+  color: var(--texto-secundario);
+  margin: 0;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .resumo {
+    flex-direction: row;
+  }
+  
+  .estatisticaHoras {
+    flex: 1;
+  }
+  
+  .estatisticasPrioridade {
+    flex: 2;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .cabecalhoTabela {
+    display: none;
+  }
+  
+  .linha {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .coluna, .colunaSmall {
+    flex: 1;
+    padding-right: 0;
+  }
+  
+  .coluna:before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+}

@@ -1,0 +1,181 @@
+.main {
+  margin: 0 auto;
+  padding: 1rem;
+  position: relative;
+}
+
+.titulo {
+  color: var(--texto-principal);
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.acoes {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.botaoAcao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botaoAdicionar {
+  background-color: rgba(144, 70, 207, 0.1);
+  color: var(--roxo-principal);
+}
+
+.botaoAdicionar:hover {
+  background-color: rgba(144, 70, 207, 0.2);
+}
+
+.botaoRelatorio {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--acao-relatorio);
+}
+
+.botaoRelatorio:hover {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Layout de abas */
+.tabsContainer {
+  margin-top: 1rem;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--cinza-medio);
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 1rem;
+}
+
+.tab:hover {
+  color: var(--roxo-principal);
+}
+
+.tabAtiva {
+  color: var(--roxo-principal);
+  border-bottom: 2px solid var(--roxo-principal);
+  font-weight: 600;
+}
+
+.tabContent {
+  min-height: 75vh; 
+  width: 100%;
+  max-width: 100%;
+}
+
+.listaContainer, .dashboardContainer, .relatorioContainer {
+  animation: fadeIn 0.3s ease-in-out;
+  padding: 0.5rem;
+}
+
+.dashboardContainer, .relatorioContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboardCard {
+  background-color: var(--branco);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.dashboardCard h3 {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--texto-principal);
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .acoes {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .botaoAcao {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .gridLayout {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboardArea {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  
+  .listaArea {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
