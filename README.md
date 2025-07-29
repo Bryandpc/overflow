@@ -48,7 +48,7 @@ O Overflow foi criado para profissionais e equipes que precisam documentar e con
 
 1. **Clone o repositório:**
 ```bash
-git clone https://github.com/Bryandpc/overflow.git
+git clone -b master https://github.com/Bryandpc/overflow.git
 cd overflow
 ```
 
