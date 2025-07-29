@@ -24,7 +24,11 @@ class CalculoUtils {
                 const [horaFim, minutoFim] = trabalho.horaFim.split(':').map(Number);
                 
                 const minutosInicio = horaInicio * 60 + minutoInicio;
-                const minutosFim = horaFim * 60 + minutoFim;
+                let minutosFim = horaFim * 60 + minutoFim;
+                
+                if (minutosFim < minutosInicio) {
+                    minutosFim += 24 * 60; 
+                }
                 
                 const diferencaMinutos = minutosFim - minutosInicio;
                 
@@ -87,7 +91,13 @@ class CalculoUtils {
                 const [horaFim, minutoFim] = trabalho.horaFim.split(':').map(Number);
                 
                 const minutosInicio = horaInicio * 60 + minutoInicio;
-                const minutosFim = horaFim * 60 + minutoFim;
+                let minutosFim = horaFim * 60 + minutoFim;
+                
+                // Se a hora de fim é menor que a de início, passou da meia-noite
+                if (minutosFim < minutosInicio) {
+                    minutosFim += 24 * 60; // Adiciona 24 horas em minutos
+                }
+                
                 const diferencaMinutos = minutosFim - minutosInicio;
                 
                 if (diferencaMinutos > 0) {
@@ -116,22 +126,14 @@ class CalculoUtils {
      * @returns {Object} - Dados da comparação entre períodos
      */
     static compararPeriodos(trabalhosPeriodoAtual, trabalhosPeriodoAnterior) {
-        console.log('Calculando comparativo entre períodos');
-        
         const totalMinutosAtual = this.calcularTotalMinutosTrabalhados(trabalhosPeriodoAtual);
         const totalMinutosAnterior = this.calcularTotalMinutosTrabalhados(trabalhosPeriodoAnterior);
-        
-        console.log('Minutos calculados:', { totalMinutosAtual, totalMinutosAnterior });
         
         const totalHorasAtual = parseFloat((totalMinutosAtual / 60).toFixed(2));
         const totalHorasAnterior = parseFloat((totalMinutosAnterior / 60).toFixed(2));
         
-        console.log('Horas calculadas (decimal):', { totalHorasAtual, totalHorasAnterior });
-        
         const totalHorasFormatadoAtual = this.formatarHorasMinutos(totalMinutosAtual);
         const totalHorasFormatadoAnterior = this.formatarHorasMinutos(totalMinutosAnterior);
-        
-        console.log('Horas formatadas:', { totalHorasFormatadoAtual, totalHorasFormatadoAnterior });
         
         let variacao = 0;
         let percentual = 0;

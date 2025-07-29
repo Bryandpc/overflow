@@ -19,8 +19,17 @@ class DashboardUtils {
     
     trabalhos.forEach(trabalho => {
       if (trabalho.dataCriacao) {
-        const data = new Date(trabalho.dataCriacao);
-        const diaSemana = data.getDay(); 
+        // Evitar problemas de fuso horário extraindo apenas a parte da data
+        let diaSemana;
+        if (trabalho.dataCriacao.includes('T')) {
+          const parteData = trabalho.dataCriacao.split('T')[0];
+          const [ano, mes, dia] = parteData.split('-');
+          const data = new Date(ano, mes - 1, dia); // mes - 1 porque Date() usa índice 0-11 para meses
+          diaSemana = data.getDay();
+        } else {
+          const data = new Date(trabalho.dataCriacao);
+          diaSemana = data.getDay();
+        }
         
         const diaSemanaIndex = diaSemana === 0 ? 6 : diaSemana - 1; 
         
@@ -29,7 +38,13 @@ class DashboardUtils {
           const [horaFim, minutoFim] = trabalho.horaFim.split(':').map(Number);
           
           const minutosInicio = horaInicio * 60 + minutoInicio;
-          const minutosFim = horaFim * 60 + minutoFim;
+          let minutosFim = horaFim * 60 + minutoFim;
+          
+          // Se a hora de fim é menor que a de início, passou da meia-noite
+          if (minutosFim < minutosInicio) {
+            minutosFim += 24 * 60; // Adiciona 24 horas em minutos
+          }
+          
           const diferencaMinutos = minutosFim - minutosInicio;
           
           if (diferencaMinutos > 0) {
@@ -78,7 +93,13 @@ class DashboardUtils {
         const [horaFim, minutoFim] = trabalho.horaFim.split(':').map(Number);
         
         const minutosInicio = horaInicio * 60 + minutoInicio;
-        const minutosFim = horaFim * 60 + minutoFim;
+        let minutosFim = horaFim * 60 + minutoFim;
+        
+        // Se a hora de fim é menor que a de início, passou da meia-noite
+        if (minutosFim < minutosInicio) {
+          minutosFim += 24 * 60; // Adiciona 24 horas em minutos
+        }
+        
         const diferencaMinutos = minutosFim - minutosInicio;
         
         if (diferencaMinutos > 0) {

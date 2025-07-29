@@ -49,7 +49,10 @@ const ModalRelatorio = ({
   useEffect(() => {
     if (isOpen) {
       const hoje = new Date();
-      const anoMesDia = hoje.toISOString().split('T')[0]; 
+      const ano = hoje.getFullYear();
+      const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+      const dia = String(hoje.getDate()).padStart(2, '0');
+      const anoMesDia = `${ano}-${mes}-${dia}`;
       
       reset({
         dataInicio: anoMesDia,

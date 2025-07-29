@@ -1,7 +1,7 @@
 import { useTrabalhos, useRemoveTrabalho } from '@/hooks/useTrabalhos';
 import styles from '@/styles/ListaTrabalhos.module.css';
 import { IoCreate, IoTrash } from 'react-icons/io5';
-import { formatarDataComDiaSemana } from '@/utils/dataUtils';
+import { formatarDataTrabalhoComDiaSemana } from '@/utils/dataUtils';
 import { calcularPercentualHoraExtra, getInfoHoraExtra, isFeriado } from '@/utils/percentualUtils';
 
 const ListaTrabalhos = ({ onEditarTrabalho }) => {
@@ -24,7 +24,7 @@ const ListaTrabalhos = ({ onEditarTrabalho }) => {
                         <div className={styles.tituloArea}>
                             <h3>
                                 {trabalho.titulo} 
-                                <span className={styles.dataCriacao}> - {formatarDataComDiaSemana(trabalho.dataCriacao)}</span>
+                                <span className={styles.dataCriacao}> - {formatarDataTrabalhoComDiaSemana(trabalho.dataCriacao, trabalho.horaInicio, trabalho.horaFim)}</span>
                             </h3>
                             <span className={styles.horario}>
                                 Horário: {trabalho.horaInicio} - {trabalho.horaFim}

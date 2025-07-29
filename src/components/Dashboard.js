@@ -38,7 +38,6 @@ const Dashboard = () => {
   useEffect(() => {
     if (trabalhosSemana && trabalhosSemanaAnterior) {
       const comparativo = CalculoUtils.compararPeriodos(trabalhosSemana, trabalhosSemanaAnterior);
-      console.log('Comparativo gerado:', comparativo);
       
       // Garantir que os valores formatados existam
       if (!comparativo.totalHorasFormatadoAtual) {

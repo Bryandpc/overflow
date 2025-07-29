@@ -13,16 +13,25 @@ class SemanaUtils {
 
         const inicioSemana = new Date(agora);
         inicioSemana.setDate(agora.getDate() + diasParaSegunda);
-        inicioSemana.setHours(0, 0, 0, 0);
-
+        
+        // Usar formatação local em vez de toISOString()
+        const ano = inicioSemana.getFullYear();
+        const mes = String(inicioSemana.getMonth() + 1).padStart(2, '0');
+        const dia = String(inicioSemana.getDate()).padStart(2, '0');
+        
         const fimSemana = new Date(inicioSemana);
         fimSemana.setDate(inicioSemana.getDate() + 6);
-        fimSemana.setHours(23, 59, 59, 999);
+        
+        const anoFim = fimSemana.getFullYear();
+        const mesFim = String(fimSemana.getMonth() + 1).padStart(2, '0');
+        const diaFim = String(fimSemana.getDate()).padStart(2, '0');
 
-        return {
-            inicio: inicioSemana.toISOString(),
-            fim: fimSemana.toISOString()
+        const resultado = {
+            inicio: `${ano}-${mes}-${dia}T00:00:00`,
+            fim: `${anoFim}-${mesFim}-${diaFim}T23:59:59`
         };
+        
+        return resultado;
     }
     
     /**
@@ -33,14 +42,20 @@ class SemanaUtils {
         const agora = new Date();
         
         const inicioMes = new Date(agora.getFullYear(), agora.getMonth(), 1);
-        inicioMes.setHours(0, 0, 0, 0);
-        
         const fimMes = new Date(agora.getFullYear(), agora.getMonth() + 1, 0);
-        fimMes.setHours(23, 59, 59, 999);
+        
+        // Usar formatação local em vez de toISOString()
+        const anoInicio = inicioMes.getFullYear();
+        const mesInicio = String(inicioMes.getMonth() + 1).padStart(2, '0');
+        const diaInicio = String(inicioMes.getDate()).padStart(2, '0');
+        
+        const anoFim = fimMes.getFullYear();
+        const mesFim = String(fimMes.getMonth() + 1).padStart(2, '0');
+        const diaFim = String(fimMes.getDate()).padStart(2, '0');
         
         return {
-            inicio: inicioMes.toISOString(),
-            fim: fimMes.toISOString()
+            inicio: `${anoInicio}-${mesInicio}-${diaInicio}T00:00:00`,
+            fim: `${anoFim}-${mesFim}-${diaFim}T23:59:59`
         };
     }
     
@@ -57,12 +72,22 @@ class SemanaUtils {
         
         const fimSemanaAnterior = new Date(inicioSemanaAtualDate);
         fimSemanaAnterior.setDate(inicioSemanaAtualDate.getDate() - 1);
-        fimSemanaAnterior.setHours(23, 59, 59, 999);
         
-        return {
-            inicio: inicioSemanaAnterior.toISOString(),
-            fim: fimSemanaAnterior.toISOString()
+        // Usar formatação local em vez de toISOString()
+        const anoInicio = inicioSemanaAnterior.getFullYear();
+        const mesInicio = String(inicioSemanaAnterior.getMonth() + 1).padStart(2, '0');
+        const diaInicio = String(inicioSemanaAnterior.getDate()).padStart(2, '0');
+        
+        const anoFim = fimSemanaAnterior.getFullYear();
+        const mesFim = String(fimSemanaAnterior.getMonth() + 1).padStart(2, '0');
+        const diaFim = String(fimSemanaAnterior.getDate()).padStart(2, '0');
+        
+        const resultado = {
+            inicio: `${anoInicio}-${mesInicio}-${diaInicio}T00:00:00`,
+            fim: `${anoFim}-${mesFim}-${diaFim}T23:59:59`
         };
+        
+        return resultado;
     }
 }
 

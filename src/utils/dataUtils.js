@@ -10,6 +10,13 @@
 export const formatarData = (dataString) => {
     if (!dataString) return '';
     
+    // Se for uma string ISO, extrair apenas a parte da data
+    if (dataString.includes('T')) {
+        const parteData = dataString.split('T')[0];
+        const [ano, mes, dia] = parteData.split('-');
+        return `${dia}/${mes}`;
+    }
+    
     const data = new Date(dataString);
     const dia = data.getDate().toString().padStart(2, '0');
     const mes = (data.getMonth() + 1).toString().padStart(2, '0');
@@ -24,6 +31,13 @@ export const formatarData = (dataString) => {
  */
 export const formatarDataCompleta = (dataString) => {
     if (!dataString) return '';
+    
+    // Se for uma string ISO, extrair apenas a parte da data
+    if (dataString.includes('T')) {
+        const parteData = dataString.split('T')[0];
+        const [ano, mes, dia] = parteData.split('-');
+        return `${dia}/${mes}/${ano}`;
+    }
     
     const data = new Date(dataString);
     const dia = data.getDate().toString().padStart(2, '0');
@@ -73,6 +87,15 @@ export const isHoje = (dataString) => {
 export const obterDiaSemana = (dataString) => {
     if (!dataString) return '';
     
+    // Se for uma string ISO, extrair apenas a parte da data
+    if (dataString.includes('T')) {
+        const parteData = dataString.split('T')[0];
+        const [ano, mes, dia] = parteData.split('-');
+        const data = new Date(ano, mes - 1, dia); // mes - 1 porque Date() usa índice 0-11 para meses
+        const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+        return diasSemana[data.getDay()];
+    }
+    
     const data = new Date(dataString);
     const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
     return diasSemana[data.getDay()];
@@ -90,4 +113,32 @@ export const formatarDataComDiaSemana = (dataString) => {
     const diaSemana = obterDiaSemana(dataString);
     
     return `${dataFormatada} (${diaSemana})`;
+};
+
+/**
+ * Formata a data com o dia da semana, considerando trabalhos que passam da meia-noite
+ * Para trabalhos que passam da meia-noite, usa a data de início
+ * @param {string} dataString - String da data em formato ISO
+ * @param {string} horaInicio - Hora de início do trabalho (HH:MM)
+ * @param {string} horaFim - Hora de fim do trabalho (HH:MM)
+ * @returns {string} Data formatada como "DD/MM (Dia)"
+ */
+export const formatarDataTrabalhoComDiaSemana = (dataString, horaInicio, horaFim) => {
+    if (!dataString) return '';
+    
+    // Verifica se o trabalho passa da meia-noite
+    if (horaInicio && horaFim) {
+        const [horaIni] = horaInicio.split(':').map(Number);
+        const [horaFi] = horaFim.split(':').map(Number);
+        
+        // Se passou da meia-noite, sempre usa a data de início
+        if (horaFi < horaIni) {
+            const dataFormatada = formatarData(dataString);
+            const diaSemana = obterDiaSemana(dataString);
+            return `${dataFormatada} (${diaSemana})`;
+        }
+    }
+    
+    // Caso normal, usa a data como está
+    return formatarDataComDiaSemana(dataString);
 };

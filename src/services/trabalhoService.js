@@ -51,10 +51,21 @@ export const getTrabalhoById = async (id) => {
 export const addTrabalho = async (trabalho) => {
   const trabalhos = await getTrabalhos();
   
+  // Criar data local em vez de UTC
+  const agora = new Date();
+  const ano = agora.getFullYear();
+  const mes = String(agora.getMonth() + 1).padStart(2, '0');
+  const dia = String(agora.getDate()).padStart(2, '0');
+  const hora = String(agora.getHours()).padStart(2, '0');
+  const minuto = String(agora.getMinutes()).padStart(2, '0');
+  const segundo = String(agora.getSeconds()).padStart(2, '0');
+  
+  const dataLocal = `${ano}-${mes}-${dia}T${hora}:${minuto}:${segundo}`;
+  
   const novoTrabalho = {
     ...trabalho,
     id: generateId(),
-    dataCriacao: new Date().toISOString()
+    dataCriacao: dataLocal
   };
   
   const trabalhosAtualizados = [...trabalhos, novoTrabalho];
@@ -79,10 +90,21 @@ export const updateTrabalho = async (id, dadosAtualizados) => {
   
   if (index === -1) return null;
   
+  // Criar data local em vez de UTC para a atualização
+  const agora = new Date();
+  const ano = agora.getFullYear();
+  const mes = String(agora.getMonth() + 1).padStart(2, '0');
+  const dia = String(agora.getDate()).padStart(2, '0');
+  const hora = String(agora.getHours()).padStart(2, '0');
+  const minuto = String(agora.getMinutes()).padStart(2, '0');
+  const segundo = String(agora.getSeconds()).padStart(2, '0');
+  
+  const dataLocal = `${ano}-${mes}-${dia}T${hora}:${minuto}:${segundo}`;
+  
   trabalhos[index] = { 
     ...trabalhos[index], 
     ...dadosAtualizados,
-    dataAtualizacao: new Date().toISOString() 
+    dataAtualizacao: dataLocal 
   };
   
   const sucesso = salvarNoStorage(CHAVE_TRABALHOS, trabalhos);
@@ -119,9 +141,6 @@ export const removeTrabalho = async (id) => {
 export const getTrabalhosPorPeriodo = async (dataInicio, dataFim) => {
   const trabalhos = await getTrabalhos();
   
-  const dataInicioObj = new Date(dataInicio);
-  const dataFimObj = new Date(dataFim);
-  
   const trabalhosFiltrados = trabalhos.filter(trabalho => {
     const dataTrabalho = trabalho.dataCriacao;
     
@@ -129,39 +148,14 @@ export const getTrabalhosPorPeriodo = async (dataInicio, dataFim) => {
       return false;
     }
     
-    const dataTrabalhoObj = new Date(dataTrabalho);
-    const dataTrabalhoApenasData = new Date(dataTrabalhoObj);
-    dataTrabalhoApenasData.setHours(0, 0, 0, 0);
+    // Extrair apenas a parte da data (YYYY-MM-DD) sem considerar o horário
+    const dataTrabalhoString = dataTrabalho.split('T')[0];
+    const dataInicioString = dataInicio.split('T')[0];
+    const dataFimString = dataFim.split('T')[0];
     
-    const dataInicioApenasData = new Date(dataInicioObj);
-    dataInicioApenasData.setHours(0, 0, 0, 0);
-    
-    const dataFimApenasData = new Date(dataFimObj);
-    dataFimApenasData.setHours(23, 59, 59, 999);
-    
-    const dentroDoIntervalo = 
-      dataTrabalhoApenasData.getTime() >= dataInicioApenasData.getTime() && 
-      dataTrabalhoApenasData.getTime() <= dataFimApenasData.getTime();
-    
-    const hoje = new Date();
-    hoje.setHours(0, 0, 0, 0);
-    const amanha = new Date(hoje);
-    amanha.setDate(amanha.getDate() + 1);
-    
-    const ehHoje = dataTrabalhoApenasData.getTime() >= hoje.getTime() && dataTrabalhoApenasData.getTime() < amanha.getTime();
-    
-    return dentroDoIntervalo;
+    // Comparar apenas as strings de data
+    return dataTrabalhoString >= dataInicioString && dataTrabalhoString <= dataFimString;
   });
-  
-  if (trabalhosFiltrados.length === 0 || trabalhosFiltrados.length < trabalhos.length / 3) {
-    const datasDisponiveisSet = new Set();
-    trabalhos.forEach(trabalho => {
-      if (trabalho.dataCriacao) {
-        const data = new Date(trabalho.dataCriacao);
-        datasDisponiveisSet.add(data.toLocaleDateString('pt-BR'));
-      }
-    });
-  }
   
   return trabalhosFiltrados.sort((a, b) => {
     const dataA = new Date(a.dataCriacao);

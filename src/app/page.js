@@ -22,6 +22,7 @@ export default function Home() {
   let abrirModal = null;
   const [tabAtiva, setTabAtiva] = useState('trabalhos');
   const [modalRelatorioAberto, setModalRelatorioAberto] = useState(false);
+  const [deveAbrirModal, setDeveAbrirModal] = useState(false);
   const { data: trabalhos } = useTrabalhos();
   const { 
     gerarRelatorio, 
@@ -43,8 +44,24 @@ export default function Home() {
     }
   }, [showPDFDownloader, semTrabalhos]);
 
+  useEffect(() => {
+    if (deveAbrirModal && tabAtiva === 'trabalhos' && abrirModal) {
+      abrirModal();
+      setDeveAbrirModal(false);
+    }
+  }, [deveAbrirModal, tabAtiva, abrirModal]);
+
   const handleSetAbrirModal = (fn) => {
     abrirModal = fn;
+  };
+  
+  const handleAbrirModalTrabalho = () => {
+    if (tabAtiva === 'trabalhos' && abrirModal) {
+      abrirModal();
+    } else {
+      setTabAtiva('trabalhos');
+      setDeveAbrirModal(true);
+    }
   };
   
   const handleAbrirModalRelatorio = () => {
@@ -71,7 +88,7 @@ export default function Home() {
           <div className={styles.acoes}>
             <button 
               className={`${styles.botaoAcao} ${styles.botaoAdicionar}`}
-              onClick={() => abrirModal && abrirModal()}
+              onClick={handleAbrirModalTrabalho}
             >
               <IoAdd /> Adicionar Trabalho
             </button>
